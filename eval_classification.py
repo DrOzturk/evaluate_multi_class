@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-def compare_thresholds(df, truth_col_name, pred_col_name,
-                       confidence_col_name, confidence_threshold):
+def eval_with_threshold(df, truth_col_name, pred_col_name,
+                        confidence_col_name, confidence_threshold):
     """
     :param df: DataFrame with ground truth and predicted value in a column
     :param truth_col_name: string name of columng having ground truth

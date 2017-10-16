@@ -26,8 +26,8 @@ class TestEvalClassification(unittest.TestCase):
         self.df.columns.contains("confidence")
 
         # If confidence cutoff is .5
-        rates=eval_classification.compare_thresholds(self.df, "truth", "predicted",
-                        "confidence",0.4)
+        rates=eval_classification.eval_with_threshold(self.df, "truth", "predicted",
+                        "confidence", 0.4)
         #self.assertEqual(rates,(1,0,0))
         self.assertEqual(rates,
                          {"correct_classified_rate" : 0.25,
@@ -36,8 +36,8 @@ class TestEvalClassification(unittest.TestCase):
 
         #as we decrease required confidence, we expect decrease in non_confident
         # and possible increase of misclassified or correct classified
-        rates=eval_classification.compare_thresholds(self.df, "truth", "predicted",
-                        "confidence",0.3)
+        rates=eval_classification.eval_with_threshold(self.df, "truth", "predicted",
+                        "confidence", 0.3)
         #self.assertEqual(rates,(1,0,0))
         self.assertEqual(rates,
                          {"correct_classified_rate" : 0.25,
@@ -46,8 +46,8 @@ class TestEvalClassification(unittest.TestCase):
 
         #further decrease required confidence, further decrease in non_confident
         # and possible increase of misclassified or correct classified
-        rates=eval_classification.compare_thresholds(self.df, "truth", "predicted",
-                        "confidence",0.2)
+        rates=eval_classification.eval_with_threshold(self.df, "truth", "predicted",
+                        "confidence", 0.2)
         #self.assertEqual(rates,(1,0,0))
         self.assertEqual(rates,
                          {"correct_classified_rate" : 0.5,
