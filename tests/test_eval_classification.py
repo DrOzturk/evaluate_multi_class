@@ -59,8 +59,10 @@ class TestEvalClassification(unittest.TestCase):
         rates_on_range = eval_classification.run_thresholds(self.df, "truth", "predicted",
                         "confidence", thresholds)
         self.assertEqual(len(thresholds), rates_on_range.shape[0])
-        self.assertEqual(3,rates_on_range.shape[1])
+        self.assertEqual(4,rates_on_range.shape[1])
         # third one is threshold 0.3
         pd.testing.assert_series_equal(rates_on_range.loc[2], pd.Series({"correct_classified_rate" : 0.25,
                             "misclassified_rate" : 0.5,
-                            "not_confident_rate" : 0.25}),check_names=False)
+                            "not_confident_rate" : 0.25,
+                            "threshold" : 0.3}),check_names=False)
+
